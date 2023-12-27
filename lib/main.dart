@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:friva/pages/game_page.dart';
 
 import 'HomePage.dart';
 
@@ -16,10 +17,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'Architects Daughter',
+        scaffoldBackgroundColor: Color.fromRGBO(31, 31, 31, 1.0,),
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: GamePage(),
     );
   }
+
 }
 

@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
           children: [
             Text("This should Give TITLE"),
             SizedBox(height: 25,),
-          Center(child: ElevatedButton(onPressed: (){}, child: Icon(Icons.high_quality),)),
+          Center(child: ElevatedButton(onPressed: (){}, child: Icon(Icons.high_quality),),),
 
           ],
         ),
