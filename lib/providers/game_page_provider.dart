@@ -8,7 +8,7 @@ class GamePageProvider extends ChangeNotifier {
   final int _maxquestions = 10;
 
   List? questions;
-  int _currentQuestionscount =0;
+  int _currentQuestionscount = 0;
 
   BuildContext context;
   GamePageProvider({required this.context}) {
@@ -17,18 +17,30 @@ class GamePageProvider extends ChangeNotifier {
   }
 
   Future<void> _getQuestionsfromAPI() async {
-    var _response = await _dio.get('',queryParameters: {
-      'amount':10,
-      'type': 'boolean',
-      'difficulty':'easy',
-    },);
-    var _data = jsonDecode(_response.toString(),); 
-    questions= _data["results"];
+    var _response = await _dio.get(
+      '',
+      queryParameters: {
+        'amount': 10,
+        'type': 'boolean',
+        'difficulty': 'easy',
+      },
+    );
+    var _data = jsonDecode(
+      _response.toString(),
+    );
+    questions = _data["results"];
     notifyListeners();
-
   }
 
-  String getcurrentquestionstext(){
+  String getcurrentquestionstext() {
     return questions![_currentQuestionscount]["question"];
+  }
+
+  void answerquestion(String _answer) async {
+    bool iscorrect =
+        questions![_currentQuestionscount]["correct_answer"] == _answer;
+        _currentQuestionscount++;
+        print(iscorrect ? "correct" : "incorrect");
+        notifyListeners();
   }
 }
