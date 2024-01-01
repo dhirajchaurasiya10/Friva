@@ -22,7 +22,8 @@ class GamePage extends StatelessWidget {
     return Builder(
       builder: (_context) {
         _pageProvider = _context.watch<GamePageProvider>();
-        return Scaffold(
+        if(_pageProvider!.questions!=null){
+          return Scaffold(
           body: SafeArea(
             child: Container(
               padding: EdgeInsets.symmetric(
@@ -32,7 +33,8 @@ class GamePage extends StatelessWidget {
             ),
           ),
         );
-      }
+        }else {return Center(child: CircularProgressIndicator(color: Colors.white,),);}
+      },
     );
   }
 
@@ -58,7 +60,7 @@ class GamePage extends StatelessWidget {
 
   Widget _questionText() {
     return Text(
-      "Test Question 1, Nothing Interesting",
+      _pageProvider!.getcurrentquestionstext(),
       style: TextStyle(
         color: Colors.white,
         fontSize: 25,

@@ -1,12 +1,34 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
 class GamePageProvider extends ChangeNotifier {
   final Dio _dio = Dio();
+  final int _maxquestions = 10;
+
+  List? questions;
+  int _currentQuestionscount =0;
 
   BuildContext context;
   GamePageProvider({required this.context}) {
     _dio.options.baseUrl = 'https://opentdb.com/api.php';
-    print("Hello");
+    _getQuestionsfromAPI();
+  }
+
+  Future<void> _getQuestionsfromAPI() async {
+    var _response = await _dio.get('',queryParameters: {
+      'amount':10,
+      'type': 'boolean',
+      'difficulty':'easy',
+    },);
+    var _data = jsonDecode(_response.toString(),); 
+    questions= _data["results"];
+    notifyListeners();
+
+  }
+
+  String getcurrentquestionstext(){
+    return questions![_currentQuestionscount]["question"];
   }
 }
