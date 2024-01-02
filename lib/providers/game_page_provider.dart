@@ -39,8 +39,22 @@ class GamePageProvider extends ChangeNotifier {
   void answerquestion(String _answer) async {
     bool iscorrect =
         questions![_currentQuestionscount]["correct_answer"] == _answer;
-        _currentQuestionscount++;
-        print(iscorrect ? "correct" : "incorrect");
+    _currentQuestionscount++;
+    // print(iscorrect ? "correct" : "incorrect");
+    showDialog(
+        context: context,
+        builder: (BuildContext _context) {
+          return AlertDialog(
+            backgroundColor: iscorrect ? Colors.green : Colors.red,
+            title: Icon(
+              iscorrect ? Icons.check_circle : Icons.cancel_sharp,
+              color: Colors.white,
+            ),
+          );
+        },
+        );
+        await Future.delayed(Duration(seconds: 1),);
+        Navigator.pop(context);
         notifyListeners();
   }
 }
