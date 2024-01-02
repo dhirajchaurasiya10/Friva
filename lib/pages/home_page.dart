@@ -73,7 +73,9 @@ class _HomePageState extends State<HomePage> {
   Widget _startgamebtn() {
     return MaterialButton(onPressed: (){
       Navigator.push(context, MaterialPageRoute(builder: (BuildContext _context){
-        return GamePage();
+        return GamePage(
+          difficultyLevel: _difficultytexts[_currentdifficultylevel.toInt()].toLowerCase(),
+        );
       }));
     },color: Colors.blue,
     minWidth: _deviceWidth  !* 0.80,
