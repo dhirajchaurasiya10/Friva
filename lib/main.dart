@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:friva/pages/game_page.dart';
+import 'package:friva/pages/home_page.dart';
 
 import 'HomePage.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color.fromRGBO(31, 31, 31, 1.0,),
       ),
       debugShowCheckedModeBanner: false,
-      home: GamePage(),
+      home: HomePage(),
     );
   }
 
