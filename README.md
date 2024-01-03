@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+App created using Frivia: open quesiton database
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
