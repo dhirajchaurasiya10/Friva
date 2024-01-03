@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-App created using Frivia: open quesiton database
+App created using [Frivia](https://opentdb.com/): open quesiton database
 
 ## Getting Started
 
